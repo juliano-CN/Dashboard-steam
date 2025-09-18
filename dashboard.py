@@ -2,27 +2,6 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import kagglehub
-import os
-#baixar os dados
-# Download latest version
-path = kagglehub.dataset_download("fronkongames/steam-games-dataset")
-
-print("Path to dataset files:", path)
-
-data = pd.read_csv(os.path.join(path, "games.csv"),header=None,skiprows=1) 
-
-data.columns = ['AppID', 'Name', 'Release date', 'Estimated owners', 'Peak CCU',
-       'Required age', 'Price', 'Discount','DLC count', 'About the game',
-       'Supported languages', 'Full audio languages', 'Reviews',
-       'Header image', 'Website', 'Support url', 'Support email', 'Windows',
-       'Mac', 'Linux', 'Metacritic score', 'Metacritic url', 'User score',
-       'Positive', 'Negative', 'Score rank', 'Achievements', 'Recommendations',
-       'Notes', 'Average playtime forever', 'Average playtime two weeks',
-       'Median playtime forever', 'Median playtime two weeks', 'Developers',
-       'Publishers', 'Categories', 'Genres', 'Tags', 'Screenshots', 'Movies']
-
-data.to_csv("games.csv",index_label= False)
 
 #python -m streamlit run dashboard.py
 
@@ -30,16 +9,8 @@ data.to_csv("games.csv",index_label= False)
 st.set_page_config(layout="wide",page_title="Dashboard")
 
 #ler os dados
-data = pd.read_csv("games.csv",sep=",")
-data_copy = data.copy()#copia df
-data_copy = data_copy.drop_duplicates()#copia linhas repetidas
-#remove colunas que não vamos usar
-data_copy = data_copy.drop(['AppID','Discount','About the game','Peak CCU',
-        'Reviews','Header image', 'Website', 'Support url', 
-        'Support email','Metacritic url','Notes',
-        'Score rank', 'Recommendations',
-        'Average playtime two weeks','Median playtime two weeks',
-        'Screenshots', 'Movies'],axis=1)
+data = pd.read_parquet("Data/games.parquet")
+data_copy = data.copy()#copia o df
 
 data_copy = data_copy[data_copy["Estimated owners"] != "0 - 0"]
 data_copy = data_copy[~data_copy['Genres'].isna()]
