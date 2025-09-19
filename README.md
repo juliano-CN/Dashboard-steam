@@ -1,40 +1,10 @@
-- AppID = unique identifier.
-- name = Game name (string). 
-- release_date = Release date (string).
-- estimated_owners = Estimated owners (string, e.g.:"0-20000").
-- peak_ccu = Number of concurrent users, yesterday (int).
-- required_age = Age required to play, 0 if it is for all audiences (int).
-- price = Price in USD, 0.0 if its free (float).
-- dlc_count = Number of DLCs, 0 if you have none (int).
-- detailed_description = Detailed description of the game (string).
-- short_description = Brief description of the game, does not contain HTML tags (string).
-- supported_languages = Comma-separated enumeration of supported languages.
-- full_audio_languages = Comma-separated enumeration of languages with audio support.
-- reviews
-- header_image = Header image URL in the store (string).
-- website = Game website (string).
-- support_url = Game support URL (string).
-- support_email = Game support email (string).
-- windows = Does it support Windows? (bool).
-- mac = Does it support Mac? (bool).
-- linux = Does it support Linux? (bool).
-- metacritic_score = Metacritic score, 0 if it has none (int).
-- metacritic_url = Metacritic review URL (string).
-- user_score = Users score, 0 if it has none (int).
-- positive = Positive votes (int).
-- negative = Negative votes (int).
-- score_rank = Score rank of the game based on user reviews (string).
-- achievements = Number of achievements, 0 if it has none (int).
-- recommendations = User recommendations, 0 if it has none (int).
-- notes = Extra information about the game content (string).
-- average_playtime_forever = Average playtime since March 2009, in minutes (int).
-- average_playtime_2weeks = Average playtime in the last two weeks, in minutes (int).
-- median_playtime_forever = Median playtime since March 2009, in minutes (int).
-- median_playtime_2weeks = Median playtime in the last two weeks, in minutes (int).
-- developers = Game developers.
-- publishers = Game publishers.
-- categories = Game categories.
-- genres = Game genres.
-- scrennshots = Game screenshots.
-- movies = Game movies.
-- tags = Tags.# Dashboard-steam
+O dashboard pode ser acessado pelo [link](https://dashboard-steam.streamlit.app).
+
+Os dados foram baixados no [link](https://www.kaggle.com/datasets/fronkongames/steam-games-dataset/data?select=games.json).
+
+Neste dashboard é possível filtrar os dados por ano, gênero e se é grátis ou não. 
+
+- Gráfico de linha de lançamentos por ano
+- Gráfico de barra de lançamentos por mês
+- Boxplot dos preços
+- Gráfico de dispersão dos votos positivos e negativos dos jogos destacando a estimativa de proprietários do jogo.
